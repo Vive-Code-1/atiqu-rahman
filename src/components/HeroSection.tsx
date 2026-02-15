@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { MapPin, ChevronDown, Download } from "lucide-react";
+import { MapPin, Download } from "lucide-react";
 import { gsap } from "gsap";
 import atiqurPhoto from "@/assets/atiqur-photo.jpeg";
 
@@ -113,13 +113,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <a
-        href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-primary-foreground/50"
-      >
-        <ChevronDown size={28} />
-      </a>
     </section>
   );
 };
