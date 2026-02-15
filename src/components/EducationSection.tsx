@@ -8,24 +8,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const education = [
   {
-    degree: "Bachelor of Economics — Environmental & Resource Economics",
-    institution: "University of Dhaka",
-    detail: "CGPA 3.16 / 4.00",
-  },
-  {
     degree: "HR for People Managers Specialization",
-    institution: "University of Minnesota (Online)",
-    detail: "",
+    institution: "University of Minnesota",
+    detail: "July – August 2023",
   },
   {
-    degree: "HSC — Govt. Shahid Suhrawardy College, Dhaka",
-    institution: "",
-    detail: "GPA 5.00 / 5.00",
+    degree: "Bachelor of Economics in Environmental and Resource Economics",
+    institution: "University of Dhaka",
+    detail: "CGPA 3.16 / 4.00 · February 2017 – 2021",
   },
   {
-    degree: "SSC — Farazipara M.A. Wazed Ali High School",
-    institution: "",
-    detail: "GPA 5.00 / 5.00",
+    degree: "Higher Secondary Certificate (HSC) — Science",
+    institution: "Government Azizul Haque College, Bogura",
+    detail: "GPA 5.00 / 5.00 · January 2014 – April 2016",
+  },
+  {
+    degree: "Secondary School Certificate (SSC) — Science",
+    institution: "Bogura Zilla School, Bogura",
+    detail: "GPA 5.00 / 5.00 · January 2006 – December 2013",
   },
 ];
 
