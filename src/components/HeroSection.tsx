@@ -94,7 +94,7 @@ const HeroSection = () => {
             <MapPin size={16} /> Dhaka, Bangladesh
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+          <div className="mt-8 mb-16 flex flex-wrap items-center justify-center gap-4 md:justify-start">
             <a
               href="#contact"
               className="magnetic-btn inline-block rounded-md bg-accent px-8 py-3 font-['Space_Grotesk'] text-sm font-semibold text-accent-foreground shadow"
