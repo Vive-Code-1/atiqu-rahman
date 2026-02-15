@@ -1,57 +1,35 @@
 
+# Mobile Bottom Navbar with Glass Effect
 
-# Md. Atiqur Rahman — Portfolio Website
+## What Changes
 
-## Overview
-A clean, professional single-page portfolio website showcasing Atiqur's multidisciplinary background in banking, research, data analysis, environmental economics, and HRM. Includes a working contact form that sends emails via Resend.
+### Mobile (below md breakpoint)
+- **Remove** the current hamburger menu, slide-in drawer, and overlay entirely
+- **Replace** with a **fixed bottom navigation bar** inspired by the reference image:
+  - Rounded pill shape, centered at the bottom of the screen
+  - **Glass/frosted effect**: semi-transparent dark background with `backdrop-blur-xl` and a subtle border
+  - **5 icon buttons** in a row: Home, About (user icon), Experience (briefcase), Education (graduation cap), Contact Me (message icon highlighted in accent blue)
+  - The Contact Me icon gets a circular accent-colored background to stand out (matching the reference)
+  - Icons use `lucide-react` (Home, User, Briefcase, GraduationCap, MessageCircle)
+- **Remove** the hamburger button from the top navbar on mobile
 
----
+### Desktop (md and above)
+- **Add glass effect** to the top navbar: `bg-white/10 backdrop-blur-xl border-b border-white/10` style when scrolled, keeping transparent when at top
+- Keep the existing layout (logo, links, Contact Me button) unchanged
 
-## Sections
+## Technical Details
 
-### 1. Hero Section
-- Professional photo (uploaded image)
-- Name: **Md. Atiqur Rahman**
-- Tagline highlighting key roles: Banking Professional | Research Assistant | Environmentalist | Data Analyst | HRM | Economic Policy Analyst
-- Location: Dhaka, Bangladesh
-- CTA button scrolling to contact form
+### File: `src/components/Navbar.tsx`
+- Import additional icons: `Home, User, Briefcase, GraduationCap, MessageCircle` from lucide-react
+- Remove `Menu, X` imports (no longer needed)
+- Remove `mobileOpen` state and the slide-in drawer markup
+- Desktop nav: update scrolled class to use glass effect (`bg-primary/70 backdrop-blur-xl border-b border-white/10`)
+- Add a new mobile bottom bar: `fixed bottom-4 left-4 right-4 z-50 md:hidden` with rounded-full, glass background, flex row of icon links
+- Each icon links to its section (`#`, `#about`, `#experience`, `#education`, `#contact`)
+- Contact Me icon wrapped in a circular accent background
 
-### 2. About Me
-- Brief professional summary drawn from CV — multidisciplinary background in economics, research, and banking
-- Key highlights: University of Dhaka graduate, BRAC International research experience, teaching, data analysis
+### File: `src/index.css`
+- No changes needed (glass effect handled via Tailwind utilities)
 
-### 3. Experience
-- **Happycoders** — Teaching Assistant (Sep 2022 – Present)
-- **Growing Together** — Research Assistant, reporting to BRAC International country director (Jan 2023 – Nov 2023)
-- **DataSense** — Interviewer
-
-### 4. Education
-- Bachelor of Economics in Environmental and Resource Economics, University of Dhaka (CGPA 3.16/4.00)
-- HR for People Managers Specialization, University of Minnesota
-- HSC & SSC with GPA 5.0
-
-### 5. Skills & Certifications
-- Technical: MS Office, SPSS, Stata, Data Analysis, Research
-- Soft: Critical Thinking, Risk Management, Project Management, Communication
-- Languages: Bangla (native), English (proficient), French (beginner)
-- IELTS Band 6.5
-- Trainings: Disaster Management, Digital Marketing, British Council Active Citizen
-
-### 6. Contact Form (with Resend integration)
-- Fields: Name, Email, Subject, Message
-- Sends email directly to atiqur.mdrahman96@gmail.com via a Lovable Cloud edge function using the Resend API
-- Success/error toast notifications
-- Input validation with Zod
-
----
-
-## Design
-- Clean, modern, professional aesthetic with a navy blue and white color scheme (banking-inspired)
-- Smooth scroll navigation with a sticky top navbar
-- Fully responsive (mobile-friendly)
-- Subtle animations on scroll
-
-## Backend (Lovable Cloud)
-- One edge function: `send-contact-email` — receives form data, validates it, and sends email via Resend API
-- Resend API key stored securely as a secret
-
+### File: `src/pages/Index.tsx`
+- May need to add bottom padding on mobile to prevent content being hidden behind the bottom navbar
