@@ -88,7 +88,7 @@ const HeroSection = () => {
           <p className="mt-4 max-w-xl font-['Space_Grotesk'] text-sm font-medium tracking-widest text-accent/90 uppercase">
             Banking Professional · Research Assistant · Environmentalist
             <br className="hidden sm:block" />
-            Data Analyst · HRM · Economic Policy Analyst
+            · Data Analyst · HRM · Economic Policy Analyst
           </p>
           <p className="mt-4 flex items-center justify-center gap-1 text-primary-foreground/70 md:justify-start">
             <MapPin size={16} /> Dhaka, Bangladesh
