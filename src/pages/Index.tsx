@@ -19,6 +19,8 @@ const Index = () => (
       <ContactSection />
     </main>
     <Footer />
+    {/* Spacer for mobile bottom navbar */}
+    <div className="h-20 md:hidden" />
   </>
 );
 
