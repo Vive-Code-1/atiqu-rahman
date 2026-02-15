@@ -49,7 +49,7 @@ const Navbar = () => {
             href="#contact"
             className="rounded-full bg-accent px-5 py-2 font-['Space_Grotesk'] text-xs font-semibold tracking-wider text-accent-foreground uppercase transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 active:scale-95"
           >
-            Contact Us
+            Contact Me
           </a>
         </div>
 
@@ -64,21 +64,52 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <ul className="flex flex-col gap-4 bg-primary/95 px-6 pb-6 backdrop-blur-md md:hidden">
+      <div
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+          mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        onClick={() => setMobileOpen(false)}
+      />
+      <div
+        className={`fixed top-0 right-0 z-50 flex h-full w-72 flex-col bg-primary/98 shadow-2xl backdrop-blur-xl transition-transform duration-400 ease-out md:hidden ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between border-b border-border/20 px-6 py-5">
+          <span className="font-['Playfair_Display'] text-lg font-bold text-primary-foreground">
+            Menu
+          </span>
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="rounded-full p-2 text-primary-foreground/70 transition-colors hover:bg-accent/10 hover:text-accent"
+            aria-label="Close menu"
+          >
+            <X size={22} />
+          </button>
+        </div>
+        <ul className="flex flex-col gap-1 px-4 pt-6">
           {navLinks.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="block font-['Space_Grotesk'] text-sm font-medium text-primary-foreground/80 transition-colors hover:text-accent"
+                className="block rounded-lg px-4 py-3 font-['Space_Grotesk'] text-sm font-medium tracking-wide text-primary-foreground/80 transition-all hover:bg-accent/10 hover:text-accent"
               >
                 {l.label}
               </a>
             </li>
           ))}
         </ul>
-      )}
+        <div className="mt-auto border-t border-border/20 px-6 py-6">
+          <a
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            className="block w-full rounded-full bg-accent py-3 text-center font-['Space_Grotesk'] text-sm font-semibold tracking-wider text-accent-foreground uppercase transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-accent/30 active:scale-95"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
     </nav>
   );
 };
