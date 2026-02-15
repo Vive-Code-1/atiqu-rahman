@@ -1,5 +1,10 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const education = [
   {
@@ -24,40 +29,73 @@ const education = [
   },
 ];
 
-const EducationSection = () => (
-  <section id="education" className="bg-background py-24 px-6">
-    <div className="container mx-auto max-w-3xl">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mb-2 text-center text-3xl font-bold text-foreground"
-      >
-        Education
-      </motion.h2>
-      <div className="mx-auto mb-12 h-1 w-16 rounded bg-accent" />
+const EducationSection = () => {
+  const listRef = useRef<HTMLDivElement>(null);
 
-      <div className="space-y-6">
-        {education.map((edu, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="flex gap-4 rounded-lg border border-border bg-card p-5"
-          >
-            <GraduationCap className="mt-1 flex-shrink-0 text-accent" size={22} />
-            <div>
-              <h3 className="font-semibold text-foreground">{edu.degree}</h3>
-              {edu.institution && <p className="text-sm text-muted-foreground">{edu.institution}</p>}
-              {edu.detail && <p className="mt-1 text-xs font-medium text-accent">{edu.detail}</p>}
+  useEffect(() => {
+    if (!listRef.current) return;
+    const items = listRef.current.querySelectorAll(".edu-card");
+    gsap.fromTo(
+      items,
+      { y: 50, opacity: 0, rotateX: 15 },
+      {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, []);
+
+  return (
+    <section id="education" className="bg-background py-24 px-6">
+      <div className="container mx-auto max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <p className="mb-2 text-center font-['Space_Grotesk'] text-xs font-medium tracking-[0.3em] text-accent uppercase">
+            Academic background
+          </p>
+          <h2 className="mb-2 text-center text-3xl font-bold text-foreground md:text-4xl">
+            Education
+          </h2>
+          <div className="mx-auto mb-12 h-1 w-16 rounded bg-accent" />
+        </motion.div>
+
+        <div ref={listRef} className="space-y-5">
+          {education.map((edu, i) => (
+            <div
+              key={i}
+              className="edu-card creative-card flex gap-4 rounded-xl border border-border bg-card p-6"
+            >
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent/10">
+                <GraduationCap className="text-accent" size={20} />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">{edu.degree}</h3>
+                {edu.institution && (
+                  <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                )}
+                {edu.detail && (
+                  <p className="mt-1 font-['Space_Grotesk'] text-xs font-semibold text-accent">
+                    {edu.detail}
+                  </p>
+                )}
+              </div>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default EducationSection;
