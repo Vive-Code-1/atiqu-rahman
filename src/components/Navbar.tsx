@@ -6,7 +6,6 @@ const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
