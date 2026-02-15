@@ -8,6 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
+    role: "Universal Officer",
+    company: "BRAC Bank PLC",
+    period: "Nov 2024 – Present",
+    desc: "Working full-time as a Universal Officer, contributing to banking operations and customer service excellence.",
+  },
+  {
     role: "Teaching Assistant",
     company: "Happycoders",
     period: "Sep 2022 – Present",
@@ -67,10 +73,12 @@ const ExperienceSection = () => {
           <div className="mx-auto mb-12 h-1 w-16 rounded bg-accent" />
         </motion.div>
 
-        <div ref={timelineRef} className="timeline-line space-y-8 pl-2">
+        <div ref={timelineRef} className="relative space-y-10 pl-5">
+          {/* Timeline line */}
+          <div className="absolute left-[39px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent to-primary/20" />
           {experiences.map((exp, i) => (
-            <div key={i} className="timeline-item flex gap-4">
-              <div className="relative z-10 mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg">
+            <div key={i} className="timeline-item flex items-start gap-5">
+              <div className="relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg">
                 <Briefcase size={18} />
               </div>
               <div className="creative-card flex-1 rounded-xl bg-card p-6 shadow-sm">

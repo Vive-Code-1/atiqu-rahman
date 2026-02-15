@@ -160,20 +160,7 @@ html {
   box-shadow: 0 20px 40px hsl(var(--primary) / 0.1), 0 0 0 1px hsl(var(--accent) / 0.1);
 }
 
-/* Timeline line */
-.timeline-line {
-  position: relative;
-}
-
-.timeline-line::before {
-  content: '';
-  position: absolute;
-  left: 19px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, hsl(var(--accent)), hsl(var(--primary) / 0.2));
-}
+/* Timeline line - now handled inline */
 
 /* Magnetic button */
 .magnetic-btn {
