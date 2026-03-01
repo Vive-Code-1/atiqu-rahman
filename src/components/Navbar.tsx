@@ -34,32 +34,32 @@ const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between px-6 py-4">
-          <a href="#" className="font-['Playfair_Display'] text-xl font-bold text-primary-foreground">
+        <div className="container relative mx-auto flex items-center px-6 py-4">
+          <a href="#" className="flex-shrink-0 font-['Playfair_Display'] text-xl font-bold text-primary-foreground">
             Atiqur<span className="text-accent">.</span>
           </a>
 
-          {/* Desktop links */}
-          <div className="hidden items-center gap-8 md:flex">
-            <ul className="flex gap-8">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="font-['Space_Grotesk'] text-xs font-medium tracking-widest text-primary-foreground/70 uppercase transition-colors hover:text-accent"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="#contact"
-              className="rounded-full bg-accent px-5 py-2 font-['Space_Grotesk'] text-xs font-semibold tracking-wider text-accent-foreground uppercase transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 active:scale-95"
-            >
-              Contact Me
-            </a>
-          </div>
+          {/* Centered nav links */}
+          <ul className="absolute left-1/2 flex -translate-x-1/2 gap-8">
+            {navLinks.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="font-['Space_Grotesk'] text-xs font-medium tracking-widest text-primary-foreground/70 uppercase transition-colors hover:text-accent"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Contact button right */}
+          <a
+            href="#contact"
+            className="ml-auto rounded-full bg-accent px-5 py-2 font-['Space_Grotesk'] text-xs font-semibold tracking-wider text-accent-foreground uppercase transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 active:scale-95"
+          >
+            Contact Me
+          </a>
         </div>
       </nav>
 

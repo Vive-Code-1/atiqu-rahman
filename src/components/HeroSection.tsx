@@ -47,30 +47,13 @@ const HeroSection = () => {
         <div className="absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full bg-accent/5" />
       </div>
 
-      <div className="container relative z-10 mx-auto flex flex-col items-center gap-10 md:flex-row md:gap-16">
-        {/* Photo with glow ring */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.9, type: "spring" }}
-          className="flex-shrink-0"
-        >
-          <div className="relative">
-            <div className="absolute -inset-3 animate-pulse rounded-full bg-accent/20 blur-xl" />
-            <img
-              src={atiqurPhoto}
-              alt="Md. Atiqur Rahman"
-              className="relative h-56 w-56 rounded-full border-4 border-accent object-cover shadow-2xl glow-accent md:h-72 md:w-72"
-            />
-          </div>
-        </motion.div>
-
-        {/* Text */}
+      <div className="container relative z-10 mx-auto flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-20 lg:gap-28">
+        {/* Text — first on desktop (left side) */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center md:text-left"
+          className="order-2 text-center md:order-1 md:flex-1 md:text-left"
         >
           <motion.p
             initial={{ opacity: 0, x: -20 }}
@@ -80,12 +63,19 @@ const HeroSection = () => {
           >
             Welcome to my portfolio
           </motion.p>
-          <h1 className="text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-7xl">
             Md. Atiqur
             <br />
             <span className="gradient-text">Rahman</span>
           </h1>
-          <p className="mt-4 max-w-xl font-['Space_Grotesk'] text-sm font-medium tracking-widest text-accent/90 uppercase">
+          {/* Accent bar */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="mx-auto mt-4 hidden h-1 w-24 origin-left rounded-full bg-accent md:mx-0 md:block"
+          />
+          <p className="mt-4 max-w-xl font-['Space_Grotesk'] text-sm font-medium tracking-widest text-accent/90 uppercase md:text-base">
             Banking Professional · Research Assistant · Environmentalist
             <br className="hidden sm:block" />
             · Data Analyst · HRM · Economic Policy Analyst
@@ -111,8 +101,28 @@ const HeroSection = () => {
             </a>
           </div>
         </motion.div>
-      </div>
 
+        {/* Photo — second on desktop (right side) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.9, type: "spring" }}
+          className="order-1 flex-shrink-0 md:order-2"
+        >
+          <div className="relative">
+            {/* Decorative gradient blob */}
+            <div className="absolute -inset-8 hidden rounded-full bg-accent/10 blur-3xl md:block" />
+            {/* Accent ring */}
+            <div className="absolute -inset-4 hidden rounded-full border-2 border-accent/20 md:block" />
+            <div className="absolute -inset-3 animate-pulse rounded-full bg-accent/20 blur-xl" />
+            <img
+              src={atiqurPhoto}
+              alt="Md. Atiqur Rahman"
+              className="relative h-56 w-56 rounded-full border-4 border-accent object-cover shadow-2xl glow-accent md:h-80 md:w-80 lg:h-96 lg:w-96"
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
