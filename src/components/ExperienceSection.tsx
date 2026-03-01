@@ -38,7 +38,7 @@ const ExperienceSection = () => {
 
   useEffect(() => {
     if (!timelineRef.current) return;
-    const items = timelineRef.current.querySelectorAll(".timeline-item");
+    const items = timelineRef.current.querySelectorAll(".exp-card");
     gsap.fromTo(
       items,
       { x: -60, opacity: 0 },
@@ -58,7 +58,7 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="bg-secondary py-24 px-6">
-      <div className="container mx-auto max-w-3xl">
+      <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,15 +73,16 @@ const ExperienceSection = () => {
           <div className="mx-auto mb-12 h-1 w-16 rounded bg-accent" />
         </motion.div>
 
-        <div ref={timelineRef} className="relative space-y-10 pl-5">
-          {/* Timeline line */}
-          <div className="absolute left-[39px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent to-primary/20" />
+        <div ref={timelineRef} className="grid gap-5 md:grid-cols-2">
           {experiences.map((exp, i) => (
-            <div key={i} className="timeline-item flex items-start gap-5">
-              <div className="relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg">
-                <Briefcase size={18} />
+            <div
+              key={i}
+              className="exp-card creative-card flex gap-4 rounded-xl border border-border bg-card p-6"
+            >
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent/10">
+                <Briefcase className="text-accent" size={20} />
               </div>
-              <div className="creative-card flex-1 rounded-xl bg-card p-6 shadow-sm">
+              <div>
                 <h3 className="text-lg font-semibold text-foreground">{exp.role}</h3>
                 <p className="font-['Space_Grotesk'] text-sm font-medium text-accent">
                   {exp.company}

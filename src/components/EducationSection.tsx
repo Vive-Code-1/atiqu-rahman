@@ -55,7 +55,7 @@ const EducationSection = () => {
 
   return (
     <section id="education" className="bg-background py-24 px-6">
-      <div className="container mx-auto max-w-3xl">
+      <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ const EducationSection = () => {
           <div className="mx-auto mb-12 h-1 w-16 rounded bg-accent" />
         </motion.div>
 
-        <div ref={listRef} className="space-y-5">
+        <div ref={listRef} className="grid gap-5 md:grid-cols-2">
           {education.map((edu, i) => (
             <div
               key={i}
